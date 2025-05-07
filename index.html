@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Оплата подписки</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    button {
+      padding: 12px 20px;
+      background-color: #30a7f7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1f8dd6;
+    }
+  </style>
+</head>
+<body>
+  <h2>Подписка на 1 месяц</h2>
+  <p>Для доступа к контенту нажмите кнопку ниже и оплатите 100 звёзд</p>
+  <button onclick="pay()">💳 Оплатить 100 ⭐</button>
+
+  <script>
+    async function pay() {
+      const tg = window.Telegram.WebApp;
+      const invoiceLink = "https://t.me/$vwAsn1-h4FDABAAAxBYZzXRjdGk";
+
+      if (tg && tg.openInvoice) {
+        tg.openInvoice(invoiceLink, (status) => {
+          if (status === 'paid') {
+            alert('✅ Оплата прошла успешно!');
+            tg.close();
+          } else {
+            alert('❌ Оплата не прошла или была отменена.');
+          }
+        });
+      } else {
+        alert("Telegram WebApp API недоступен.");
+      }
+    }
+  </script>
+</body>
+</html>
