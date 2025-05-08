@@ -35,8 +35,8 @@
   <script>
     async function pay() {
       const tg = window.Telegram.WebApp;
-      const invoiceLink = "https://t.me/$rNCT2F4Y4FBsBAAAlvbz87t6MfY";
-      
+      const invoiceLink = "OuJte14Y4FB4BAAAdMuRsSoQpug"; // ✅ только slug, без ссылки
+
       if (tg && tg.openInvoice) {
         tg.openInvoice(invoiceLink, (status) => {
           if (status === 'paid') {
